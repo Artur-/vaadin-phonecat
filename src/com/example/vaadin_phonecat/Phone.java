@@ -1,13 +1,16 @@
 package com.example.vaadin_phonecat;
 
 public class Phone {
-	public String name;
-	public String snippet;
+	private String name;
+	private String snippet;
+	private int age;
 
-	public Phone(String name, String snippet) {
+	public Phone(String name, String snippet, int age) {
 		this.name = name;
 		this.snippet = snippet;
+		this.age = age;
 	}
+	
 
 	public String getName() {
 		return name;
@@ -23,6 +26,14 @@ public class Phone {
 
 	public void setSnippet(String snippet) {
 		this.snippet = snippet;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 }
