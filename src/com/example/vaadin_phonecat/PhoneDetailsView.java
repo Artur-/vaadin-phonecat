@@ -2,6 +2,8 @@ package com.example.vaadin_phonecat;
 
 import org.json.JSONObject;
 
+import com.vaadin.event.MouseEvents.ClickEvent;
+import com.vaadin.event.MouseEvents.ClickListener;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
@@ -50,7 +52,14 @@ public class PhoneDetailsView extends GridLayout implements View {
 
 		phoneImagesContainer.removeAllComponents();
 		for (String url : p.getPhoneImageUrls()) {
-			Image img = new Image(null, new ThemeResource(url));
+			final Image img = new Image(null, new ThemeResource(url));
+			img.addClickListener(new ClickListener() {
+
+				@Override
+				public void click(ClickEvent event) {
+					image.setSource(img.getSource());
+				}
+			});
 			phoneImagesContainer.addComponent(img);
 		}
 
