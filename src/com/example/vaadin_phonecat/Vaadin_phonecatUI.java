@@ -1,6 +1,10 @@
 package com.example.vaadin_phonecat;
 
+import java.io.IOException;
+
 import javax.servlet.annotation.WebServlet;
+
+import org.json.JSONException;
 
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.data.Container.ItemSetChangeEvent;
@@ -45,14 +49,20 @@ public class Vaadin_phonecatUI extends UI {
 		layout.setSpacing(true);
 
 		phoneContainer = new BeanItemContainer<Phone>(Phone.class);
+	
 		phoneContainer.addItemSetChangeListener(new ItemSetChangeListener() {
 			@Override
 			public void containerItemSetChange(ItemSetChangeEvent event) {
 				populate(layout);
 			}
 		});
-		phoneContainer.addAll(PhoneController.getPhones());
-
+		try {
+			phoneContainer.addAll(PhoneController.getPhones());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		final VerticalLayout searchOrderLayout = new VerticalLayout();
 		TextField searchField = new TextField("Search:");
 		searchField.setTextChangeEventMode(TextChangeEventMode.EAGER);
