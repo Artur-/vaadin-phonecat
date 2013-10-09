@@ -21,6 +21,7 @@ public class PhoneController {
 			JSONObject phoneJson = phonesJson.getJSONObject(i);
 			Phone phone = new Phone(phoneJson.getString("name"),
 					phoneJson.getString("snippet"), phoneJson.getInt("age"));
+			phone.setImage(phoneJson.getString("imageUrl"));
 			phones.add(phone);
 		}
 		return phones;

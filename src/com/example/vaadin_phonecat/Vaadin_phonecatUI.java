@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 
 import org.json.JSONException;
 
+import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.data.Container.ItemSetChangeEvent;
 import com.vaadin.data.Container.ItemSetChangeListener;
@@ -17,17 +18,21 @@ import com.vaadin.data.util.filter.Or;
 import com.vaadin.data.util.filter.SimpleStringFilter;
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.event.FieldEvents.TextChangeListener;
+import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.AbstractTextField.TextChangeEventMode;
 import com.vaadin.ui.ComboBox;
+import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+@Theme("vaadin-phonecattheme")
 public class Vaadin_phonecatUI extends UI {
 
 	private BeanItemContainer<Phone> phoneContainer;
@@ -41,15 +46,14 @@ public class Vaadin_phonecatUI extends UI {
 	@Override
 	protected void init(VaadinRequest request) {
 		final HorizontalLayout mainLayout = new HorizontalLayout();
+		mainLayout.setSizeFull();
 		mainLayout.setMargin(true);
 		setContent(mainLayout);
 
 		final VerticalLayout layout = new VerticalLayout();
-		layout.setMargin(true);
-		layout.setSpacing(true);
 
 		phoneContainer = new BeanItemContainer<Phone>(Phone.class);
-	
+
 		phoneContainer.addItemSetChangeListener(new ItemSetChangeListener() {
 			@Override
 			public void containerItemSetChange(ItemSetChangeEvent event) {
@@ -64,6 +68,7 @@ public class Vaadin_phonecatUI extends UI {
 			e.printStackTrace();
 		}
 		final VerticalLayout searchOrderLayout = new VerticalLayout();
+		searchOrderLayout.setSizeUndefined();
 		TextField searchField = new TextField("Search:");
 		searchField.setTextChangeEventMode(TextChangeEventMode.EAGER);
 		searchField.addTextChangeListener(new TextChangeListener() {
@@ -81,6 +86,7 @@ public class Vaadin_phonecatUI extends UI {
 		});
 
 		final ComboBox orderSelect = new ComboBox("Sort by:");
+		orderSelect.setWidth("210px");
 		orderSelect.setImmediate(true);
 		orderSelect.setNullSelectionAllowed(false);
 		orderSelect.setItemCaptionPropertyId("caption");
@@ -102,14 +108,13 @@ public class Vaadin_phonecatUI extends UI {
 
 		searchOrderLayout.addComponents(searchField, orderSelect);
 		mainLayout.addComponents(searchOrderLayout, layout);
+		mainLayout.setExpandRatio(layout, 1);
 	}
 
 	private void populate(VerticalLayout layout) {
 		layout.removeAllComponents();
 		for (Phone p : phoneContainer.getItemIds()) {
-			Label label = new Label(p.getName() + "<br/>" + p.getSnippet(),
-					ContentMode.HTML);
-			layout.addComponent(label);
+			layout.addComponent(new PhoneLayout(p));
 		}
 
 	}

@@ -3,6 +3,8 @@ package com.example.vaadin_phonecat;
 public class Phone {
 	private String name;
 	private String snippet;
+	private String image;
+	private String id;
 	private int age;
 
 	public Phone(String name, String snippet, int age) {
@@ -10,7 +12,6 @@ public class Phone {
 		this.snippet = snippet;
 		this.age = age;
 	}
-	
 
 	public String getName() {
 		return name;
@@ -34,6 +35,22 @@ public class Phone {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

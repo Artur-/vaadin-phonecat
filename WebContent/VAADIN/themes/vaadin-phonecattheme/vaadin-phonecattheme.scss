@@ -1,0 +1,48 @@
+/* Import the reindeer theme.*/
+/* This only allows us to use the mixins defined in it and does not add any styles by itself. */
+@import "../reindeer/reindeer.scss";
+body.v-generated-body {
+background: white;
+}
+
+
+/* This contains all of your theme.*/
+/* If somebody wants to extend the theme she will include this mixin. */
+@mixin vaadin-phonecattheme {
+  /* Include all the styles from the reindeer theme */
+  @include reindeer;
+  &.v-app {
+  background: white;
+  }
+  .phonelayout {
+  	border: 1px solid #ddd;
+  	padding: 4px;
+  	border-radius: 4px;
+  	-moz-border-radius: 4px;
+  	-webkit-border-radius: 4px;
+  	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+  	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+  	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+  	
+  	height: 100px + 15 + 4 + 2;
+  	padding-top: 15px;
+  	}
+  	.phonelayout > div {
+  	display: block;
+  	white-space: normal;
+  	}
+.thumb {
+  float: left;
+  margin: -1em 1em 1.5em 0em;
+  padding-bottom: 1em;
+  height: 100px;
+  width: 100px;
+}
+
+.phones li {
+  clear: both;
+  height: 100px;
+  padding-top: 15px;
+}
+  /* Insert your theme rules here */
+}
