@@ -1,7 +1,6 @@
 package com.example.vaadin_phonecat;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class PhoneController {
