@@ -52,4 +52,27 @@ public class PhoneDetails {
 		}
 	}
 
+	public boolean getBoolean(String key) {
+		try {
+			return getBoolean(data, key);
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	private boolean getBoolean(JSONObject data, String key)
+			throws JSONException {
+		int dot = key.indexOf('.');
+		if (dot > -1)
+			return getBoolean(data.getJSONObject(key.substring(0, dot)),
+					key.substring(dot+1));
+		try {
+			return data.getBoolean(key);
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }
