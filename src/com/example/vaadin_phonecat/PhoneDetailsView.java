@@ -61,8 +61,14 @@ public class PhoneDetailsView extends GridLayout implements View {
 
 		}
 		specsList.addComponent(new HeaderLabel("Additional Features"));
+		specsList.addComponent(new Label(getCheckmark(p.getBoolean("connectivity.infrared"))+" Infrared"));
+		specsList.addComponent(new Label(getCheckmark(p.getBoolean("connectivity.gps"))+" GPS"));
 		specsList.addComponent(new Label(p.getData("additionalFeatures")));
 
+	}
+
+	private char getCheckmark(boolean b) {
+		return b ? '\u2713':'\u2718';
 	}
 
 	public static class HeaderLabel extends Label {
