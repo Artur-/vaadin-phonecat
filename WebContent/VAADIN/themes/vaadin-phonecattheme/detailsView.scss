@@ -1,0 +1,60 @@
+@mixin detailsView {
+
+/** Detail View **/
+img.phone {
+  float: left;
+  border: 1px solid black;
+  margin-right: 3em;
+  margin-bottom: 2em;
+  background-color: white;
+  padding: 2em;
+  height: 400px;
+  width: 400px;
+}
+
+phone-thumbs {
+  margin: 0;
+  list-style: none;
+}
+
+.phone-thumbs > img {
+  border: 1px solid black;
+  display: inline-block;
+  margin: 1em;
+}
+
+.phone-thumbs img {
+  height: 100px;
+  width: 100px;
+  padding: 1em;
+}
+
+.specs {
+  clear: both;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.specs > div{
+  display: inline-block;
+  width: 200px;
+  vertical-align: top;
+}
+
+.header {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+ul.specs dt {
+  font-weight: bold;
+}
+
+h1 {
+  border-bottom: 1px solid gray;
+}
+
+
+
+}

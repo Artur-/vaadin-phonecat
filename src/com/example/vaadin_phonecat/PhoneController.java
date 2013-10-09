@@ -28,4 +28,12 @@ public class PhoneController {
 		return phones;
 	}
 
+	public static PhoneDetails getPhoneDetails(String phoneId) throws JSONException, IOException {
+		JSONObject phoneDetailsJson = new JSONObject(
+				IOUtils.toString(PhoneController.class
+						.getResourceAsStream("phones/"+phoneId+".json")));
+		return new PhoneDetails(phoneDetailsJson);
+
+	}
+
 }

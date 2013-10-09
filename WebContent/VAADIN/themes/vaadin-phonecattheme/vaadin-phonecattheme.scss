@@ -1,6 +1,8 @@
 /* Import the reindeer theme.*/
 /* This only allows us to use the mixins defined in it and does not add any styles by itself. */
 @import "../reindeer/reindeer.scss";
+@import "detailsView.scss";
+
 body.v-generated-body {
 background: white;
 }
@@ -45,5 +47,6 @@ background: white;
   height: 100px;
   padding-top: 15px;
 }
-  /* Insert your theme rules here */
+
+@include detailsView;
 }
